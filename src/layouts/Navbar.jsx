@@ -1,8 +1,51 @@
-import React from "react";
-// import { Link } from "react-router-dom";
-import "../index.css";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../index";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+// import FoundMovies from "./FoundMovies";
+
+const API = "https://api.themoviedb.org/3";
+const apiKEY = "api_key=e9e7cb266dc0d3f00bd94a93dae48419";
 
 const Navbar = () => {
+  const { user, setUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    axios
+      .post("/user/logout")
+      .then(() => {
+        setUser({});
+        console.log("Logged out!");
+        navigate("/");
+      })
+      .catch((err) => console.error(err));
+  };
+  // todavia no tiene uso.
+  const [inputvalue, setInputValue] = React.useState("");
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const [submited, setSubmited] = useState(false);
+  const [movies, setMovies] = useState({});
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .get(
+        `${API}/search/multi?${apiKEY}&language=en-US&query=${inputvalue}&page=1&include_adult=false`
+      )
+      .then((resp) => resp.data)
+      .then((response) => {
+        setMovies(response);
+        setSubmited(true);
+      })
+      .catch((err) => console.error(err));
+  };
+  // console.log("moviessss", movies);
   return (
     <header className="header">
       <div className="navbar">
@@ -40,11 +83,61 @@ const Navbar = () => {
       </div>
 
       <div className="searchmovies">
-        <input type="text" placeholder="Search what you want.." />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Search what you want.."
+            onChange={handleChange}
+            value={inputvalue}
+          />
+          <input
+            type="submit"
+            value={"Search"}
+            // onClick={() => <FoundMovies />}
+          />
+          <div className="container-busqueda-resultados">
+            {submited === true ? (
+              <div className="">
+                {
+                  <>
+                    <div>Results of your search</div>
+                    <ul className="resultados-busqueda">
+                      {movies.results.map((mov, i) =>
+                        mov.original_title ? (
+                          <li className="single-result-search" key={i}>
+                            <a href={`/movies/singlemovie/${mov.id}`}>
+                              {mov.original_title}
+                            </a>
+                          </li>
+                        ) : (
+                          ""
+                        )
+                      )}
+                    </ul>
+                  </>
+                }
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        </form>
       </div>
 
       <div>
-        <p>Login</p>
+        {user.id ? (
+          <>
+            <p onClick={handleLogout}>Log out</p>
+
+            <Link to={"/user-profile"}>
+              <p>{user.name}'s profile</p>
+            </Link>
+          </>
+        ) : (
+          <Link to={"/user/login"}>
+            <p>Login</p>
+          </Link>
+        )}
       </div>
     </header>
   );

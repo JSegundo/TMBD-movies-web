@@ -7,7 +7,8 @@ const apiKEY = "api_key=e9e7cb266dc0d3f00bd94a93dae48419";
 //populares
 router.get("/popular", (req, res) => {
   axios
-    .get(`${API}/movie/popular?${apiKEY}&language=en-US&page=1`)
+    // .get(`${API}/movie/popular?${apiKEY}&language=en-US&page=1`)
+    .get(`${API}/movie/popular?${apiKEY}&language=en-US`)
     .then((response) => {
       res.json(response.data);
     })
@@ -43,7 +44,14 @@ router.get("/singlemovie/:movieid", (req, res) => {
 
 //route for the input search movies
 
-// router.get(`/search?q=${search.value}`, (req, res) => {
+// router.get(`/search?q=${value}`, (req, res) => {
+//   axios
+//     .get(
+//       `${API}/search/multi?${apiKEY}&language=en-US&query=${req.query.value}&page=1&include_adult=false`
+//     )
+//     .then((obj) => obj.data)
+//     .then((movies) => res.send(movies))
+//     .catch((err) => console.error(err));
 // });
 
 module.exports = router;

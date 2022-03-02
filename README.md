@@ -1,3 +1,21 @@
+//notas:
+
+mañana martes tengo que lograr que no se
+expire la sesion cuando refresco la página.
+
+//
+//
+//
+// PORTALES: TELETRANSPORTACION DE COMPONENTES, lo puedo usar para mostrar un cartel
+cuando un user se quiera registrar y ya esté el mail en uso.
+
+//
+//
+//
+//
+//
+//
+
 # 26 - TMDB
 
 ![logop5](https://p5-hall-of-fame.s3.amazonaws.com/p5logo.png)

@@ -5,20 +5,23 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(56, 55, 55);
+  background-color: #292a2b;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
+a {
+  color: white;
+}
 /* ------------------------NAVBAR */
 .header {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  height: 80px;
 }
 
 .navbar {
@@ -65,18 +68,54 @@ a {
   color: #070a1b;
 }
 
+.searchmovies {
+  max-height: 40px;
+}
+
+.container-busqueda-resultados {
+  z-index: 100;
+  display: block;
+}
+
+form {
+  z-index: 100;
+  display: block;
+}
+
+.intendando {
+  z-index: 100;
+  display: block;
+}
+
+.resultados-busqueda {
+  display: flex;
+  flex-direction: column;
+  z-index: 190;
+  background-color: #789395;
+}
+
+.single-result-search a {
+  text-decoration: none;
+  color: white;
+}
 /* ------------------------NAVBAR */
 /* <>><>>><>>><><<<<< */
 
 /* ---------------MOVIES AND CONTAINER MOVIES */
 
 .container-movies {
-  /* margin-top: 50px; */
   display: flex;
   /* overflow-x: scroll; */
   flex-wrap: wrap;
   width: 90%;
   margin: 0 auto;
+}
+
+.container-movies a {
+  /* z-index: -10; */
+  border-radius: 2px;
+  border: 2px solid blue;
+  max-width: 300px;
 }
 
 .movie-title {

@@ -9,8 +9,8 @@ const CardSingleMovie = ({ movies }) => {
     <>
       {movies.map((movie) => {
         return (
-          <Link to={`/movies/singlemovie/${movie.id}`}>
-            <div className="cardMovie" key={movie.id}>
+          <Link key={movie.id} to={`/movies/singlemovie/${movie.id}`}>
+            <div className="cardMovie">
               <h1 className="movie-title">{movie.title}</h1>
               <img
                 src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
