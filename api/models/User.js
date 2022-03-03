@@ -25,8 +25,11 @@ User.init(
     salt: {
       type: S.STRING,
     },
+    favotireMovies: {
+      type: S.ARRAY(S.STRING),
+    },
   },
-  { sequelize: db, modelName: "users", timestamps: false }
+  { sequelize: db, modelName: "users", timestamps: true }
 );
 
 User.beforeCreate((user) => {

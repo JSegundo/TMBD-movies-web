@@ -23,6 +23,7 @@ const Login = () => {
     axios
       .post("/user/login", { email, password })
       .then((res) => {
+        localStorage.setItem("sess-user", JSON.stringify(res.data));
         setUser(res.data);
         navigate("/user-profile");
       })

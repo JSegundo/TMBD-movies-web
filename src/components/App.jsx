@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
+// import React, { useContext, useEffect, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 import TopMoviesContainer from "../containers/TopMoviesContainer";
 import TopTvShowsContainer from "../containers/TopTvShowsContainer";
@@ -13,22 +14,7 @@ import Login from "../layouts/Login";
 import Register from "../layouts/Register";
 import UserProfile from "../layouts/UserProfile";
 
-import { UserContext } from "../index";
-
 const App = () => {
-  const { setUser } = useContext(UserContext);
-
-  useEffect(() => {
-    axios
-      .get("/user/me")
-      .then((res) => res.data)
-      .then((user) => {
-        console.log("se encontró el usuario", user);
-        setUser(user);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
   return (
     <>
       <Navbar />

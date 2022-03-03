@@ -87,7 +87,7 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
-db.sync().then(() => {
+db.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(`SERVER LISTENING ON https://localhost:${PORT}`);
   });

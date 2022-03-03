@@ -19,7 +19,7 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
-  console.log("rqe.session login", req.session);
+  console.log("cookies", req.cookies);
   res.send(req.user);
 });
 
@@ -31,8 +31,6 @@ router.get("/me", (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  // req.logOut();
-  // req.session.destroy();
   res.clearCookie("cookiename");
   res.sendStatus(200);
 });
@@ -40,4 +38,7 @@ router.post("/logout", (req, res) => {
 router.use("/", function (req, res) {
   res.sendStatus(404);
 });
+
+router.post("/favs/:movieid", (req, res) => {});
+
 module.exports = router;

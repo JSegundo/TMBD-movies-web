@@ -1,9 +1,13 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 // import { Link } from "react-router-dom";
 
 const MovieDetails = ({ movie }) => {
   console.log(movie);
   if (!movie) return <p>Loading data...</p>;
+
+  const addToFavorite = () => {};
 
   return (
     <>
@@ -36,7 +40,8 @@ const MovieDetails = ({ movie }) => {
           </div>
         </div>
 
-        <div className="actions">
+        <div className="actions" onClick={addToFavorite}>
+          <FontAwesomeIcon icon={faHeart} inverse className="favotireIcon" />
           <a href="/#">add to favotires</a>
         </div>
 
