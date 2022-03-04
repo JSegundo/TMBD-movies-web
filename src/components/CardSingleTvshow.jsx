@@ -12,7 +12,7 @@ const CardSingleTvshow = ({ tvshows }) => {
             <div className="cardMovie" key={show.id}>
               <h1 className="movie-title">{show.name}</h1>
               <img
-                src={`https://image.tmdb.org/t/p/w300/${show.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/w300/${show.poster_path}`}
                 alt="tvshow"
               />
               {/* <p>{movie.overview}</p> */}

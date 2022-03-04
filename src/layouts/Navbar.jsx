@@ -48,7 +48,7 @@ const Navbar = () => {
   };
 
   //
-  const showSearchBar = () => {
+  const toggleSearchBar = () => {
     const searchBar = document.getElementById("formsearch");
     searchBar.classList.toggle("inputsearch-invisible");
     console.log("hola");
@@ -85,13 +85,13 @@ const Navbar = () => {
           </div>
         </div>
 
-        <a href="/" className="nav-link">
+        {/* <a href="/" className="nav-link">
           People
-        </a>
+        </a> */}
       </div>
 
       <div className="searchmovies">
-        <div onClick={showSearchBar}>
+        <div onClick={toggleSearchBar}>
           <FontAwesomeIcon
             icon={faSearch}
             className="iconobusqueda"

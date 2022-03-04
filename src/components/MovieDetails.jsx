@@ -1,13 +1,22 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-// import { Link } from "react-router-dom";
+import axios from "axios";
 
 const MovieDetails = ({ movie }) => {
-  console.log(movie);
   if (!movie) return <p>Loading data...</p>;
 
-  const addToFavorite = () => {};
+  let sessUser = JSON.parse(localStorage.getItem("sess-user"));
+
+  const addToFavorite = () => {
+    axios
+      .post(`/user/favs/${sessUser.id}`, { movie })
+      .then((res) => res.data)
+      .then((obj) => {
+        localStorage.setItem("sess-user", JSON.stringify(obj));
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <>
@@ -41,12 +50,17 @@ const MovieDetails = ({ movie }) => {
         </div>
 
         <div className="actions" onClick={addToFavorite}>
-          <FontAwesomeIcon icon={faHeart} inverse className="favotireIcon" />
+          <FontAwesomeIcon
+            icon={faHeart}
+            inverse
+            className="favoriteIcon"
+            size="2x"
+          />
           <a href="/#">add to favotires</a>
         </div>
 
         <div className="header-info">
-          <h3 className="tagline">{movie.tagline}</h3>
+          <h3 className="tagline">"{movie.tagline}"</h3>
           <h2>Overview</h2>
           <p>{movie.overview}</p>
         </div>

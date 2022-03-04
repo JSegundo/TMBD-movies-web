@@ -1,5 +1,4 @@
 const Sequelize = require("sequelize");
-const pg = require("pg");
 
 const db = new Sequelize("TMDB", null, null, {
   host: "localhost",

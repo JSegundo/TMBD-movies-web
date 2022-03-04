@@ -27,14 +27,18 @@ const Login = () => {
         setUser(res.data);
         navigate("/user-profile");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        alert("Validation failed");
+        navigate("/user/login");
+        console.error(err);
+      });
   };
 
   return (
-    <>
+    <div className="containerLoginForm">
       <form onSubmit={handleSubmit} method="post">
         <section>
-          <label htmlFor="email">email</label>
+          <label htmlFor="email">Email</label>
           <input
             id="email"
             name="email"
@@ -61,12 +65,14 @@ const Login = () => {
             value={password.value}
           />
         </section>
-        <button type="submit">Sign in</button>
+        <button type="submit" className="loginbtn">
+          Sign in
+        </button>
         <Link to={"/user/register"}>
-          <p>Create an account.</p>
+          <p className="registerbtn">Create an account.</p>
         </Link>
       </form>
-    </>
+    </div>
   );
 };
 

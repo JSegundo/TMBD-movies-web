@@ -27,12 +27,12 @@ const Register = () => {
   };
 
   return (
-    <>
-      <h2>Create an account for free.</h2>
+    <div className="containerLoginForm">
       <form onSubmit={handleSubmit}>
-        <label>
-          Name
+        <section>
+          <label htmlFor="name">Name</label>
           <input
+            id="name"
             type={"text"}
             name={"name"}
             placeholder={"name.."}
@@ -40,11 +40,11 @@ const Register = () => {
             onChange={handleChange}
             value={name.value}
           />
-        </label>
-
-        <label>
-          Email
+        </section>
+        <section>
+          <label htmlFor="mail">Email</label>
           <input
+            id="mail"
             type={"text"}
             name={"email"}
             placeholder={"email.."}
@@ -52,11 +52,11 @@ const Register = () => {
             onChange={handleChange}
             value={email.value}
           />
-        </label>
-
-        <label>
-          Password
+        </section>
+        <section>
+          <label htmlFor="password">Password</label>
           <input
+            id="password"
             type={"password"}
             name={"password"}
             placeholder={"password.."}
@@ -64,11 +64,13 @@ const Register = () => {
             onChange={handleChange}
             value={password.value}
           />
-        </label>
+        </section>
 
-        <button type="submit">Register</button>
+        <button className="registerbtn" type="submit">
+          Register
+        </button>
       </form>
-    </>
+    </div>
   );
 };
 

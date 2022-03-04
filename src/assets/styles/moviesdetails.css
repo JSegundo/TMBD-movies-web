@@ -1,0 +1,55 @@
+.movieDetailsPage {
+  display: flex;
+}
+
+.releaseDate {
+  color: grey;
+}
+
+.facts {
+  display: flex;
+}
+.facts a {
+  margin-right: 10px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+.actions svg {
+  margin: 10px 10px 0 0;
+}
+
+.singlemovieposter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 40%;
+}
+
+.header-poster {
+  padding: 30px;
+  width: 60%;
+}
+.singlemovieposter img {
+  width: 100%;
+}
+
+.favoriteIcon-fav {
+  color: red;
+}
+
+.favoriteIcon-notfav {
+  color: white;
+}
+
+@media screen and (max-width: 800px) {
+  .movieDetailsPage {
+    flex-direction: column;
+  }
+  .singlemovieposter {
+    width: 100%;
+  }
+}

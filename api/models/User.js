@@ -25,7 +25,7 @@ User.init(
     salt: {
       type: S.STRING,
     },
-    favotireMovies: {
+    favoriteMovies: {
       type: S.ARRAY(S.STRING),
     },
   },

@@ -1,7 +1,6 @@
 //notas:
 
-mañana martes tengo que lograr que no se
-expire la sesion cuando refresco la página.
+necesito primero, lograr que se actualize el array en la base de datos.
 
 //
 //

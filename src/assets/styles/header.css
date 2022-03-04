@@ -37,7 +37,6 @@ a {
 
 .dropdown-content a {
   padding: 10px 0 0 0;
-  /* padding: 10px; */
   width: fit-content;
   display: block;
 }
@@ -47,9 +46,6 @@ a {
 }
 .dropdown-content a:hover {
   color: #ddd;
-}
-.dropdown:hover .dropbtn {
-  /* color: #070a1b; */
 }
 
 .searchmovies {
@@ -95,7 +91,6 @@ form {
 .single-result-search a {
   text-decoration: none;
   color: white;
-  /* margin-top: 80px; */
 }
 
 .login-logout-container {
@@ -108,6 +103,10 @@ form {
   height: fit-content;
   padding: 5px 10px;
   cursor: pointer;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 8px;
 }
 
 .iconobusqueda {

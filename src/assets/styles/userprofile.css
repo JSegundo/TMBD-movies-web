@@ -1,15 +1,20 @@
-.user-profile-container {
-}
+/* .user-profile-container {
+} */
 
 .user-header {
   width: 80%;
   margin: 0 auto;
-  background-image: url("https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZGFyayUyMHNvbGlkJTIwcGF0dGVybnMlMjBkZXNrdG9wfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+  /* background-image: url("https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZGFyayUyMHNvbGlkJTIwcGF0dGVybnMlMjBkZXNrdG9wfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"); */
+  background-image: url("../felix-mooneeram-evlkOfkQ5rE-unsplash.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   margin: auto;
   min-height: 200px;
+}
+
+.user-header .text-container {
+  padding: 20px;
 }
 
 /* .user-header h1 {
@@ -19,4 +24,49 @@
 .favotireIcon:hover {
   transform: scale(1.1);
   transition: 0.2s all;
+}
+
+.favorite-movies {
+  /* width: fit-content; */
+  /* margin: 0 auto; */
+}
+
+.favorites-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorites-title svg {
+  margin-left: 15px;
+}
+
+.single-favoriteMovie-container {
+  display: flex;
+  align-items: center;
+  /* max-width: 350px; */
+}
+
+.favs-container {
+  display: flex;
+  /* border: 2px solid purple; */
+  flex-wrap: wrap;
+  /* overflow-x: scroll; */
+}
+
+.div-container {
+  margin-top: 20px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.div-container img {
+  width: 100%;
+}
+
+.div-container h3 {
+  margin: 0;
+  padding: 20px;
 }

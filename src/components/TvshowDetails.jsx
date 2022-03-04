@@ -1,5 +1,7 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const TvShowDetails = ({ show }) => {
   console.log(show);
@@ -41,6 +43,12 @@ const TvShowDetails = ({ show }) => {
         </div>
 
         <div className="actions">
+          <FontAwesomeIcon
+            icon={faHeart}
+            inverse
+            className="favotireIcon"
+            size="2x"
+          />
           <a href="/#">add to favotires</a>
         </div>
 

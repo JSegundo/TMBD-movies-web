@@ -1,7 +1,6 @@
 import React from "react";
 // import React, { useContext, useEffect, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
-// import axios from "axios";
 
 import TopMoviesContainer from "../containers/TopMoviesContainer";
 import TopTvShowsContainer from "../containers/TopTvShowsContainer";

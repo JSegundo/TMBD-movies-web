@@ -23,22 +23,25 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
   res.send(req.user);
 });
 
-router.get("/me", (req, res) => {
-  if (!req.user) {
-    return res.sendStatus(401);
-  }
-  res.send(req.user);
-});
-
 router.post("/logout", (req, res) => {
-  res.clearCookie("cookiename");
+  // res.clearCookie("cookiename");
   res.sendStatus(200);
 });
 
-router.use("/", function (req, res) {
-  res.sendStatus(404);
+router.post("/favs/:userid", (req, res) => {
+  User.findByPk(req.params.userid)
+    .then((user) => {
+      let arr = user.favoriteMovies;
+      arr.push(req.body.movie.id);
+      return arr;
+    })
+    .then((data) =>
+      User.update(
+        { favoriteMovies: data },
+        { returning: true, where: { id: req.params.userid } }
+      )
+    )
+    .then(([rowsUpdate, [updatedUser]]) => res.send(updatedUser));
 });
-
-router.post("/favs/:movieid", (req, res) => {});
 
 module.exports = router;
