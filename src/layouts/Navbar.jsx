@@ -37,7 +37,7 @@ const Navbar = () => {
     e.preventDefault();
     axios
       .get(
-        `${API}/search/multi?${apiKEY}&language=en-US&query=${inputvalue}&page=1&include_adult=false`
+        `${API}/search/multi?${apiKEY}&language=en-US&query=${inputvalue}&page=1&include_adult=true`
       )
       .then((resp) => resp.data)
       .then((response) => {
@@ -47,24 +47,20 @@ const Navbar = () => {
       .catch((err) => console.error(err));
   };
 
-  //
   const toggleSearchBar = () => {
     const searchBar = document.getElementById("formsearch");
     searchBar.classList.toggle("inputsearch-invisible");
-    console.log("hola");
   };
 
   return (
     <header className="header">
-      <div className="navbar">
+      {/* <div className="navbar" aria-label="navigation">
         <a href="/" className="nav-link">
           TMDB
         </a>
 
         <div className="dropdown">
-          <a href="/" className="nav-link dropbtn">
-            Movies
-          </a>
+          <div className="nav-link dropbtn">Movies</div>
 
           <div className="dropdown-content">
             <a href="/movies/popular">Popular </a>
@@ -74,9 +70,7 @@ const Navbar = () => {
         </div>
 
         <div className="dropdown">
-          <a href="/" className="nav-link dropbtn">
-            Tv Shows
-          </a>
+          <div className="nav-link dropbtn"> Tv Shows</div>
           <div className="dropdown-content">
             <a href="/tvshow/popular">Popular </a>
             <a href="/tvshow/airingtoday">Airing today</a>
@@ -84,11 +78,50 @@ const Navbar = () => {
             <a href="/tvshow/ontv">On TV </a>
           </div>
         </div>
+      </div> */}
 
-        {/* <a href="/" className="nav-link">
-          People
-        </a> */}
-      </div>
+      <nav className="navbar">
+        <a href="/" className="nav-link">
+          TMDB
+        </a>
+
+        <button className="dropdown">
+          <p className="nav-link dropbtn">Movies</p>
+
+          <ul className="dropdown-content">
+            <li>
+              <a href="/movies/popular">Popular </a>
+            </li>
+            <li>
+              <a href="/movies/top_rated">Top-rated </a>
+            </li>
+            <li>
+              <a href="/movies/upcoming">Upcoming </a>
+            </li>
+          </ul>
+        </button>
+
+        <button className="dropdown">
+          <p className="nav-link dropbtn"> Tv Shows</p>
+
+          <ul className="dropdown-content">
+            <li>
+              <a href="/tvshow/popular">Popular </a>
+            </li>
+            <li>
+              <a href="/tvshow/airingtoday">Airing Today </a>
+            </li>
+            <li>
+              <a href="/tvshow/toprated">Top Rated </a>
+            </li>
+            <li>
+              <a href="/tvshow/ontv">On TV </a>
+            </li>
+          </ul>
+        </button>
+      </nav>
+
+      {/* PRUEBASSSSSSSSSSSSSSSSSSSSSSSSSSSSS */}
 
       <div className="searchmovies">
         <div onClick={toggleSearchBar}>

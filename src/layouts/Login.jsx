@@ -37,7 +37,7 @@ const Login = () => {
   return (
     <div className="containerLoginForm">
       <form onSubmit={handleSubmit} method="post">
-        <section>
+        <div>
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -50,8 +50,9 @@ const Login = () => {
             onChange={handleChange}
             value={email.value}
           />
-        </section>
-        <section>
+        </div>
+
+        <div>
           <label htmlFor="current-password">Password</label>
           <input
             id="current-password"
@@ -64,7 +65,7 @@ const Login = () => {
             onChange={handleChange}
             value={password.value}
           />
-        </section>
+        </div>
         <button type="submit" className="loginbtn">
           Sign in
         </button>

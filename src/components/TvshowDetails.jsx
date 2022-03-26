@@ -2,16 +2,27 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 const TvShowDetails = ({ show }) => {
   console.log(show);
   if (!show) return <p>Loading data...</p>;
+  let sessUser = JSON.parse(localStorage.getItem("sess-user"));
 
+  const addToFavorite = () => {
+    axios
+      .post(`/user/favs/${sessUser.id}`, { show })
+      .then((res) => res.data)
+      .then((obj) => {
+        localStorage.setItem("sess-user", JSON.stringify(obj));
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <>
       <div className="singlemovieposter">
         <img
-          src={`https://image.tmdb.org/t/p/w300/${show.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/w300/${show.poster_path}`}
           alt="poster"
         />
         <div>
@@ -48,6 +59,7 @@ const TvShowDetails = ({ show }) => {
             inverse
             className="favotireIcon"
             size="2x"
+            onClick={addToFavorite}
           />
           <a href="/#">add to favotires</a>
         </div>

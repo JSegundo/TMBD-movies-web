@@ -7,8 +7,8 @@ const CardSingleTvshow = ({ tvshows }) => {
   return (
     <>
       {tvshows.map((show) => {
-        return show.backdrop_path ? (
-          <Link to={`/tvshow/tv/${show.id}`}>
+        return show.poster_path ? (
+          <Link to={`/tvshow/tv/${show.id}`} key={show.id}>
             <div className="cardMovie" key={show.id}>
               <h1 className="movie-title">{show.name}</h1>
               <img

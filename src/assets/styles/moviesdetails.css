@@ -1,18 +1,33 @@
 .movieDetailsPage {
   display: flex;
+  /* height: 100vh; */
 }
 
+.fondo-movie-card {
+  width: 100%;
+  /* z-index: -100; */
+}
+/* .movieinfo-container {
+  height: fit-content;
+  display: flex;
+} */
 .releaseDate {
   color: grey;
 }
+.tagline {
+  color: white;
+}
+/* .facts {
+  display: flex;
+} */
 
-.facts {
+.genres {
   display: flex;
 }
-.facts a {
+.genres div {
   margin-right: 10px;
+  color: white;
 }
-
 .actions {
   display: flex;
   align-items: center;
@@ -24,9 +39,10 @@
 .singlemovieposter {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 40%;
+  margin-top: 40px;
 }
 
 .header-poster {
@@ -34,11 +50,12 @@
   width: 60%;
 }
 .singlemovieposter img {
-  width: 100%;
+  /* width: 100%; */
+  border-radius: 10px;
 }
 
 .favoriteIcon-fav {
-  color: red;
+  color: #051049;
 }
 
 .favoriteIcon-notfav {
@@ -49,6 +66,7 @@
   .movieDetailsPage {
     flex-direction: column;
   }
+
   .singlemovieposter {
     width: 100%;
   }

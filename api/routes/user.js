@@ -19,20 +19,23 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
-  console.log("cookies", req.cookies);
   res.send(req.user);
 });
 
 router.post("/logout", (req, res) => {
-  // res.clearCookie("cookiename");
   res.sendStatus(200);
 });
 
 router.post("/favs/:userid", (req, res) => {
   User.findByPk(req.params.userid)
     .then((user) => {
-      let arr = user.favoriteMovies;
-      arr.push(req.body.movie.id);
+      let arr = user.favoriteMovies === null ? [] : user.favoriteMovies;
+      console.log(arr);
+      if (arr.includes(String(req.body.movie.id))) {
+        arr.splice(arr.indexOf(String(req.body.movie.id)), 1);
+      } else {
+        arr.push(String(req.body.movie.id));
+      }
       return arr;
     })
     .then((data) =>

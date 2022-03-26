@@ -12,6 +12,7 @@ import Home from "../layouts/HeroHome";
 import Login from "../layouts/Login";
 import Register from "../layouts/Register";
 import UserProfile from "../layouts/UserProfile";
+import Footer from "../layouts/Footer";
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/user/register" element={<Register />} />
         <Route path="/user-profile" element={<UserProfile />} />
       </Routes>
+      <Footer />
     </>
   );
 };

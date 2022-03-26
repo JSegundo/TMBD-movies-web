@@ -8,7 +8,6 @@ router.get("/popular", (req, res) => {
   axios
     .get(`${API}/tv/popular?${apiKEY}&language=en-US&page=1`)
     .then((response) => {
-      console.log(response.page);
       res.json(response.data);
     })
     .catch((err) => console.error(err));

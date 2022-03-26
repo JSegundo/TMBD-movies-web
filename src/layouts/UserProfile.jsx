@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faTrash } from "@fortawesome/free-solid-svg-icons";
+// import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 const UserProfile = () => {
   let sessUser = JSON.parse(localStorage.getItem("sess-user"));
-
+  console.log(sessUser);
   // const deleteAllFavorites = () => {
   //   delete sessUser.favoriteMovies;
   // };
@@ -18,18 +18,25 @@ const UserProfile = () => {
   }, []);
 
   const getFavMovies = async () => {
-    let results = await Promise.all(
-      sessUser.favoriteMovies.map((movieid) => {
-        return axios.get(`/movies/singlemovie/${movieid}`).then((obj) => {
-          console.log(obj.data);
-          return obj.data;
-        });
-      })
-    );
+    let results = [];
+
+    results =
+      sessUser.favoriteMovies !== null
+        ? await Promise.all(
+            sessUser.favoriteMovies.map((movieid) => {
+              return axios.get(`/movies/singlemovie/${movieid}`).then((obj) => {
+                console.log(obj.data);
+                return obj.data;
+              });
+            })
+          )
+        : [];
+
     setFavMovies(results);
   };
 
   const navigate = useNavigate();
+
   return (
     <div className="user-profile-container">
       {sessUser?.id ? (
@@ -37,7 +44,7 @@ const UserProfile = () => {
           <header className="user-header">
             <div className="text-container">
               <h1>Welcome, {sessUser.name}</h1>
-              <p>You've logged in succesfully</p>
+              {/* <p>You've logged in succesfully</p> */}
               <p>Member since {sessUser.createdAt.split("T")[0]}</p>
             </div>
           </header>
@@ -53,21 +60,23 @@ const UserProfile = () => {
                 />
               </div> */}
             </div>
-            <ul className="favs-container">
+            <div className="favs-container">
               {favMovies?.map((movie, i) => {
                 return (
-                  <div key={i} className="div-container">
-                    {/* <FontAwesomeIcon icon={faTrashCan} inverse size="1x" /> */}
-                    <h3>{movie.title}</h3>
-                    <img
-                      src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                      alt="movie favorite"
-                      height="350px"
-                    ></img>
-                  </div>
+                  <a href={`/movies/singlemovie/${movie.id}`} key={i}>
+                    <div className="div-container">
+                      {/* <FontAwesomeIcon icon={faTrashCan} inverse size="1x" /> */}
+                      <h3>{movie.title}</h3>
+                      <img
+                        src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                        alt="movie favorite"
+                        height="350px"
+                      ></img>
+                    </div>
+                  </a>
                 );
               })}
-            </ul>
+            </div>
           </div>
         </>
       ) : (

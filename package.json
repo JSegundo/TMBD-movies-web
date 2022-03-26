@@ -21,7 +21,9 @@
     "express-session": "^1.17.2",
     "framer-motion": "4.1.17",
     "helmet": "^5.0.2",
+    "jsonwebtoken": "^8.5.1",
     "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
@@ -32,7 +34,7 @@
     "sequelize": "^6.16.2"
   },
   "scripts": {
-    "start": "concurrently 'npm run server' 'npm run client'",
+    "start": "concurrently 'npm run server' 'npm run client' ",
     "server": "nodemon api/server.js",
     "client": "react-scripts start",
     "build": "react-scripts build"

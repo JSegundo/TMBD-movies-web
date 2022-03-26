@@ -29,7 +29,7 @@ const Register = () => {
   return (
     <div className="containerLoginForm">
       <form onSubmit={handleSubmit}>
-        <section>
+        <div>
           <label htmlFor="name">Name</label>
           <input
             id="name"
@@ -40,8 +40,8 @@ const Register = () => {
             onChange={handleChange}
             value={name.value}
           />
-        </section>
-        <section>
+        </div>
+        <div>
           <label htmlFor="mail">Email</label>
           <input
             id="mail"
@@ -52,8 +52,8 @@ const Register = () => {
             onChange={handleChange}
             value={email.value}
           />
-        </section>
-        <section>
+        </div>
+        <div>
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -64,7 +64,7 @@ const Register = () => {
             onChange={handleChange}
             value={password.value}
           />
-        </section>
+        </div>
 
         <button className="registerbtn" type="submit">
           Register

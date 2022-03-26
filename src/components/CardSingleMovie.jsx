@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CardSingleMovie = ({ movies }) => {
-  console.log(movies);
+  // console.log(movies);
   if (!movies[0]) return <p>Loading data...</p>;
 
   return (
@@ -11,7 +11,9 @@ const CardSingleMovie = ({ movies }) => {
         return (
           <Link key={movie.id} to={`/movies/singlemovie/${movie.id}`}>
             <div className="cardMovie">
-              <h1 className="movie-title">{movie.title}</h1>
+              <div className="title-container">
+                <h1 className="movie-title">{movie.title}</h1>
+              </div>
               <img
                 src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
                 alt="movie"

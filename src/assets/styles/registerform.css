@@ -16,16 +16,16 @@
   height: 100%;
 }
 
-.containerLoginForm form section {
+.containerLoginForm form div {
   display: flex;
   flex-direction: column;
 }
 
-.containerLoginForm form section label {
+.containerLoginForm form div label {
   color: white;
 }
 
-.containerLoginForm form section input {
+.containerLoginForm form div input {
   max-width: 800px;
 }
 

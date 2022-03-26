@@ -9,6 +9,12 @@ necesito primero, lograr que se actualize el array en la base de datos.
 cuando un user se quiera registrar y ya esté el mail en uso.
 
 //
+
+si la movie esta en favoritos, el corazon se tiene que mantener de color.
+
+habia pensado un useEffect que se fija en localstorage si la tiene, y le agrega o le saca una clase con el color al icono fav
+
+Hacer funcionar el add favorites para las series
 //
 //
 //

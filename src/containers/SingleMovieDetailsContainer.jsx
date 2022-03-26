@@ -16,11 +16,7 @@ const SingleMovieDetailsContainer = () => {
       .catch((err) => console.error(err));
   }, [movieid]);
 
-  return (
-    <div className="movieDetailsPage">
-      <MovieDetails movie={movie} />
-    </div>
-  );
+  return <MovieDetails movie={movie} />;
 };
 
 export default SingleMovieDetailsContainer;

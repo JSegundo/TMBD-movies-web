@@ -29,25 +29,27 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div className="home-content-container">
       <div className="herohome">
-        <h1>Fancy title...</h1>
+        <h1>TMBD</h1>
       </div>
-      <h2>Popular</h2>
-      <div className="moviesContainer">
-        <div className="carrouselMovies">
-          <CardSingleMovie movies={popular} />
+      <main>
+        <h2>Popular</h2>
+        <div className="moviesContainer">
+          <div className="carrouselMovies">
+            <CardSingleMovie movies={popular} />
+          </div>
+          <h2>Top Rated</h2>
+          <div className="carrouselMovies">
+            <CardSingleMovie movies={top_rated} />
+          </div>
+          <h2>Upcoming</h2>
+          <div className="carrouselMovies">
+            <CardSingleMovie movies={upcoming} />
+          </div>
         </div>
-        <h2>Top Rated</h2>
-        <div className="carrouselMovies">
-          <CardSingleMovie movies={top_rated} />
-        </div>
-        <h2>Upcoming</h2>
-        <div className="carrouselMovies">
-          <CardSingleMovie movies={upcoming} />
-        </div>
-      </div>
-    </>
+      </main>
+    </div>
   );
 };
 

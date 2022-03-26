@@ -4,10 +4,9 @@ import { useParams } from "react-router-dom";
 import CardSingleTvshow from "../components/CardSingleTvshow";
 
 const TopTvShowsContainer = () => {
-  console.log("hola");
   const [tvshows, setTvshows] = useState({});
   const { options } = useParams();
-  console.log(options);
+
   useEffect(() => {
     axios.get(`/tvshow/${options}`).then((obj) => {
       console.log(obj);
