@@ -148,7 +148,6 @@ const Navbar = () => {
               <div className="">
                 {
                   <>
-                    {/* <div>Results of your search</div> */}
                     <ul className="resultados-busqueda">
                       {movies.results.map((mov, i) =>
                         mov.original_title ? (
