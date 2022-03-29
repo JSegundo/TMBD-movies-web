@@ -1,5 +1,8 @@
-/* .user-profile-container {
-} */
+.user-profile-container {
+  width: 90%;
+  min-height: calc(100vh - 200px);
+  margin: 0 auto;
+}
 
 .user-header {
   width: 80%;
@@ -55,6 +58,7 @@
 
 .favs-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
   flex-wrap: wrap;
@@ -81,4 +85,10 @@
 .div-container h3 {
   margin: 0;
   padding: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .user-profile-container {
+    height: fit-content;
+  }
 }

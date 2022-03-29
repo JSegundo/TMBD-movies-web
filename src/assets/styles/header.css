@@ -201,7 +201,7 @@ form {
 @media screen and (max-width: 1000px) {
   .header {
     flex-direction: column;
-    height: 320px;
+    height: 164px;
     min-height: 180px;
   }
 }

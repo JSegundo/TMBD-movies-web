@@ -4,20 +4,24 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "../assets/styles/index.css";
+import { useUser } from "../context/UserContext.js";
 
 const API = "https://api.themoviedb.org/3";
 const apiKEY = "api_key=e9e7cb266dc0d3f00bd94a93dae48419";
 
 const Navbar = () => {
-  let sessUser = JSON.parse(localStorage.getItem("sess-user"));
-
+  // let sessUser = JSON.parse(localStorage.getItem("sess-user"));
+  const { user, setUser } = useUser();
+  let sessUser = user;
+  console.log(sessUser);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     axios
       .post("/user/logout")
       .then(() => {
-        localStorage.clear();
+        // localStorage.clear();
+        setUser(null);
         console.log("Logged out!");
         navigate("/");
       })
@@ -25,14 +29,11 @@ const Navbar = () => {
   };
   // barra de busqueda.
   const [inputvalue, setInputValue] = React.useState("");
-
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
-
   const [submited, setSubmited] = useState(false);
   const [movies, setMovies] = useState({});
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -46,7 +47,6 @@ const Navbar = () => {
       })
       .catch((err) => console.error(err));
   };
-
   const toggleSearchBar = () => {
     const searchBar = document.getElementById("formsearch");
     searchBar.classList.toggle("inputsearch-invisible");

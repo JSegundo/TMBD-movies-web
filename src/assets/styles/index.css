@@ -47,6 +47,7 @@ h1 {
   flex-wrap: wrap;
   width: 90%;
   margin: 0 auto;
+  padding: 30px;
 }
 
 .container-movies a {
@@ -54,8 +55,9 @@ h1 {
   border: 2px solid blue;
   border-radius: 8px;
   max-width: 300px;
-  padding: 20px;
+  /* padding: 20px; */
   margin: 15px 15px 0 0;
+  background-color: #051049;
 }
 
 .movie-title {
@@ -73,6 +75,7 @@ h1 {
   overflow-x: scroll;
   width: 90%;
   margin: 0 auto;
+  padding: 20px;
   /* max-height: 450px; */
   /* border: 2px solid blue; */
 }

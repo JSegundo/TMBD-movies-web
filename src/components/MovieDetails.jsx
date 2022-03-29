@@ -2,35 +2,55 @@ import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+import { useUser } from "../context/UserContext.js";
 
 const MovieDetails = ({ movie }) => {
-  useEffect(() => {
-    let user = JSON.parse(localStorage.getItem("sess-user"));
-    let corazonsito = document.getElementById("corazon-icon");
-    console.log(corazonsito);
-    if (user.favoriteMovies.includes(movie)) {
-      corazonsito.classList.add("favoriteIcon-fav");
-    } else {
-      corazonsito.classList.remove("favoriteIcon-fav");
-    }
-  }, []);
+  // useEffect(() => {
+  //   let user = JSON.parse(localStorage.getItem("sess-user"));
+  //   let corazonsito = document.getElementById("corazon-icon");
+  //   // console.log(corazonsito);
+  //   if (!user.favoriteMovies) return;
+  //   if (user.favoriteMovies.includes(movie)) {
+  //     corazonsito.classList.add("favoriteIcon-fav");
+  //   } else {
+  //     corazonsito.classList.remove("favoriteIcon-fav");
+  //   }
+  // }, []);
 
-  // if (!movie) return <p>Loading data...</p>;
+  // let sessUser = JSON.parse(localStorage.getItem("sess-user"));
+  // console.log(sessUser);
+  const { user, setUser } = useUser();
+  console.log(user);
+  const token = sessionStorage.getItem("token");
+  let sessUser = user;
 
-  let sessUser = JSON.parse(localStorage.getItem("sess-user"));
-  console.log(sessUser);
+  const navigate = useNavigate();
+
+  const authAxios = axios.create({
+    baseURL: "http://localhost:3001",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
 
   const addToFavorite = () => {
-    axios
+    if (!sessUser) {
+      navigate("/user/login");
+      return;
+    }
+    authAxios
       .post(`/user/favs/${sessUser.id}`, { movie })
       .then((res) => res.data)
       .then((obj) => {
+        setUser(obj);
         localStorage.setItem("sess-user", JSON.stringify(obj));
       })
       .catch((err) => console.error(err));
   };
 
-  // };
+  if (!movie) return <p>Movie does not exist...</p>;
 
   return (
     <>

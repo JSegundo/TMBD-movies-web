@@ -1,37 +1,37 @@
 import axios from "axios";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import { UserContext } from "../index";
+import { useUser } from "../context/UserContext.js";
 
 const Login = () => {
-  const { setUser } = useContext(UserContext);
+  const { setUser, setToken } = useUser();
 
   const [email, setEmail] = useState({});
   const [password, setPassword] = useState({});
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     if (e.target.name === "email") setEmail(e.target.value);
     if (e.target.name === "password") setPassword(e.target.value);
   };
-
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setError(null);
+
     e.preventDefault();
-    axios
-      .post("/user/login", { email, password })
-      .then((res) => {
-        localStorage.setItem("sess-user", JSON.stringify(res.data));
-        setUser(res.data);
-        navigate("/user-profile");
-      })
-      .catch((err) => {
-        alert("Validation failed");
-        navigate("/user/login");
-        console.error(err);
-      });
+    try {
+      const result = await axios.post("/user/login", { email, password });
+      localStorage.setItem("sess-user", JSON.stringify(result.data.user));
+      sessionStorage.setItem("token", result.data.token);
+      // setToken(result.data.token);
+      setUser(result.data.user);
+      navigate("/");
+    } catch (err) {
+      setError("Password is not correct");
+    }
   };
 
   return (
@@ -72,6 +72,7 @@ const Login = () => {
         <Link to={"/user/register"}>
           <p className="registerbtn">Create an account.</p>
         </Link>
+        {error && <p>{error}</p>}
       </form>
     </div>
   );

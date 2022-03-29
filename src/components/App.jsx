@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import React, { useContext, useEffect, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
 
@@ -14,7 +14,16 @@ import Register from "../layouts/Register";
 import UserProfile from "../layouts/UserProfile";
 import Footer from "../layouts/Footer";
 
+import { useUser } from "../context/UserContext.js";
+
 const App = () => {
+  const { user, setUser } = useUser();
+  let sessUser = JSON.parse(localStorage.getItem("sess-user"));
+
+  useEffect(() => {
+    setUser(sessUser);
+  }, []);
+
   return (
     <>
       <Navbar />

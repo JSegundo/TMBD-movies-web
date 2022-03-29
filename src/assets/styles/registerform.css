@@ -1,19 +1,20 @@
 .containerLoginForm {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 30%;
-  margin: 0 auto;
-  margin-top: 100px;
-  min-height: 300px;
-  border: 2px solid #070a1b;
-  border-radius: 12px;
+  justify-content: space-between; */
 }
 
 .containerLoginForm form {
+  /* margin: 0 auto;
+  padding: 20px; */
+  /* height: 100%; */
+  /* width: 30%;
   margin: 0 auto;
-  padding: 20px;
-  height: 100%;
+  margin-top: 100px;
+  height: fit-content;
+  min-height: 300px;
+  border: 2px solid #070a1b;
+  border-radius: 12px; */
 }
 
 .containerLoginForm form div {

@@ -1,6 +1,6 @@
 .movieDetailsPage {
   display: flex;
-  /* height: 100vh; */
+  height: calc(100vh - 252px);
 }
 
 .fondo-movie-card {
@@ -65,9 +65,16 @@
 @media screen and (max-width: 800px) {
   .movieDetailsPage {
     flex-direction: column;
+    height: fit-content;
   }
-
+  .genres {
+    flex-direction: column;
+  }
   .singlemovieposter {
     width: 100%;
+  }
+
+  .header-poster {
+    width: 80%;
   }
 }

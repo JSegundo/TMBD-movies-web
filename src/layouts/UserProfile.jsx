@@ -3,10 +3,18 @@ import { useNavigate } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faTrash } from "@fortawesome/free-solid-svg-icons";
 // import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useUser } from "../context/UserContext.js";
+
 import axios from "axios";
 const UserProfile = () => {
   let sessUser = JSON.parse(localStorage.getItem("sess-user"));
-  console.log(sessUser);
+  // console.log(sessUser);
+  const { user } = useUser();
+  console.log(user);
+  // useEffect(() => {
+  //   sessUser = user;
+  // }, []);
+
   // const deleteAllFavorites = () => {
   //   delete sessUser.favoriteMovies;
   // };
@@ -21,11 +29,10 @@ const UserProfile = () => {
     let results = [];
 
     results =
-      sessUser.favoriteMovies !== null
+      sessUser?.favoriteMovies !== null
         ? await Promise.all(
-            sessUser.favoriteMovies.map((movieid) => {
+            sessUser?.favoriteMovies?.map((movieid) => {
               return axios.get(`/movies/singlemovie/${movieid}`).then((obj) => {
-                console.log(obj.data);
                 return obj.data;
               });
             })
