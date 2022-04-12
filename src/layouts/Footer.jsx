@@ -1,6 +1,6 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleUp } from "@fortawesome/free-solid-svg-icons";
+import React from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowAltCircleUp } from "@fortawesome/free-solid-svg-icons"
 // import { fa } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
@@ -48,14 +48,12 @@ const Footer = () => {
           >
             Github
           </a>
-
-          <a href="/#">Contact</a>
         </p>
 
         <p>Segundo Juan &copy; 2022</p>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

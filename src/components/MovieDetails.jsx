@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-
 import { useUser } from "../context/UserContext.js"
+import { motion } from "framer-motion"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCirclePlay } from "@fortawesome/free-solid-svg-icons"
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
+import YouTube from "react-youtube"
 
 const MovieDetails = ({ movie }) => {
   const { user, setUser } = useUser()
@@ -14,9 +17,24 @@ const MovieDetails = ({ movie }) => {
 
   const [corazon, setCorazon] = useState(null)
 
+  // const [trailer, setTrailer] = useState(null)
+  const [showTrailer, setShowTrailer] = useState(false)
+  const [videoId, setVideoId] = useState(null)
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=e9e7cb266dc0d3f00bd94a93dae48419&language=en-US`
+      )
+      .then((res) => {
+        console.log("DATAAAAAAAA", res.data)
+        // setTrailer(`https://www.youtube.com/watch?v=${res.data.results[0].key}`)
+        setVideoId(res.data.results[0].key)
+      })
+  }, [movie])
+
   useEffect(() => {
     if (sessUser?.favoriteMovies.includes(JSON.stringify(movie.id))) {
-      console.log("LA TIENE EN FAVORITO")
       setCorazon(
         <FontAwesomeIcon
           icon={faHeart}
@@ -28,7 +46,6 @@ const MovieDetails = ({ movie }) => {
         />
       )
     } else {
-      console.log("NO TA EN FAVO")
       setCorazon(
         <FontAwesomeIcon
           icon={faHeart}
@@ -69,7 +86,12 @@ const MovieDetails = ({ movie }) => {
 
   return (
     <>
-      <div className="movieDetailsPage">
+      <motion.div
+        className="movieDetailsPage"
+        initial={{ width: 0 }}
+        animate={{ width: "100%" }}
+        exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
+      >
         <div className="singlemovieposter">
           {/* <img
           src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
@@ -79,11 +101,39 @@ const MovieDetails = ({ movie }) => {
             src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
             alt="poster"
           />
+          <button
+            style={{
+              backgroundColor: "transparent",
+              border: "none",
+              position: "absolute",
+              top: "40%",
+              pointer: "true",
+            }}
+            onClick={() => setShowTrailer(!showTrailer)}
+          >
+            {showTrailer ? (
+              <FontAwesomeIcon
+                icon={faCircleXmark}
+                size="16x"
+                style={{ fontSize: 80 }}
+                className="iconoPlayTrailer"
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faCirclePlay}
+                size="16x"
+                style={{ fontSize: 80 }}
+                className="iconoPlayTrailer"
+                color="lightblue"
+              />
+            )}
+          </button>
         </div>
+
         <div className="header-poster">
           <div className="title&desc">
             <h1>
-              {movie.title}{" "}
+              {movie.title}
               <span className="releaseDate">({movie.release_date})</span>
             </h1>
 
@@ -100,26 +150,6 @@ const MovieDetails = ({ movie }) => {
 
           <div className="actions" onClick={addToFavorite}>
             {corazon}
-            {/* {sessUser?.favoriteMovies.includes(movie.id) ? (
-              <FontAwesomeIcon
-                icon={faHeart}
-                inverse
-                className="favoriteIcon"
-                size="2x"
-                id="corazon-icon"
-                color={"red"}
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faHeart}
-                inverse
-                className="favoriteIcon"
-                size="2x"
-                id="corazon-icon"
-              />
-            )} */}
-
-            {/* <a href="/#">add to favotires</a> */}
           </div>
 
           <div className="header-info">
@@ -130,7 +160,23 @@ const MovieDetails = ({ movie }) => {
         </div>
 
         <div className="people"></div>
-      </div>
+      </motion.div>
+      {showTrailer && (
+        <div
+          style={{
+            justifyContent: "center",
+            display: "flex",
+          }}
+        >
+          <YouTube
+            videoId={`${videoId}`}
+            opts={{
+              height: "390",
+              width: "640",
+            }}
+          />
+        </div>
+      )}
     </>
   )
 }

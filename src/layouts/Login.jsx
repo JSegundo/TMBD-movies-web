@@ -1,41 +1,47 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import axios from "axios"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { motion } from "framer-motion"
 
-import { useUser } from "../context/UserContext.js";
+import { useUser } from "../context/UserContext.js"
 
 const Login = () => {
-  const { setUser, setToken } = useUser();
+  const { setUser, setToken } = useUser()
 
-  const [email, setEmail] = useState({});
-  const [password, setPassword] = useState({});
-  const [error, setError] = useState(null);
+  const [email, setEmail] = useState({})
+  const [password, setPassword] = useState({})
+  const [error, setError] = useState(null)
 
   const handleChange = (e) => {
-    if (e.target.name === "email") setEmail(e.target.value);
-    if (e.target.name === "password") setPassword(e.target.value);
-  };
-  const navigate = useNavigate();
+    if (e.target.name === "email") setEmail(e.target.value)
+    if (e.target.name === "password") setPassword(e.target.value)
+  }
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    setError(null);
+    setError(null)
 
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const result = await axios.post("/user/login", { email, password });
-      localStorage.setItem("sess-user", JSON.stringify(result.data.user));
-      sessionStorage.setItem("token", result.data.token);
+      const result = await axios.post("/user/login", { email, password })
+      localStorage.setItem("sess-user", JSON.stringify(result.data.user))
+      sessionStorage.setItem("token", result.data.token)
       // setToken(result.data.token);
-      setUser(result.data.user);
-      navigate("/");
+      setUser(result.data.user)
+      navigate("/")
     } catch (err) {
-      setError("Password is not correct");
+      setError("Password is not correct")
     }
-  };
+  }
 
   return (
-    <div className="containerLoginForm">
+    <motion.div
+      className="containerLoginForm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 2 }}
+      exit={{ opacity: 0 }}
+    >
       <form onSubmit={handleSubmit} method="post">
         <div>
           <label htmlFor="email">Email</label>
@@ -74,8 +80,8 @@ const Login = () => {
         </Link>
         {error && <p>{error}</p>}
       </form>
-    </div>
-  );
-};
+    </motion.div>
+  )
+}
 
-export default Login;
+export default Login

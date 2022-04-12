@@ -1,71 +1,65 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faTrash } from "@fortawesome/free-solid-svg-icons";
-// import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { useUser } from "../context/UserContext.js";
+import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { useUser } from "../context/UserContext.js"
+import { motion } from "framer-motion"
 
-import axios from "axios";
+import axios from "axios"
 const UserProfile = () => {
-  let sessUser = JSON.parse(localStorage.getItem("sess-user"));
-  // console.log(sessUser);
-  const { user } = useUser();
-  console.log(user);
-  // useEffect(() => {
-  //   sessUser = user;
-  // }, []);
-
-  // const deleteAllFavorites = () => {
-  //   delete sessUser.favoriteMovies;
-  // };
-
-  const [favMovies, setFavMovies] = useState([]);
+  let sessUser = JSON.parse(localStorage.getItem("sess-user"))
+  const { user } = useUser()
+  const [favMovies, setFavMovies] = useState([])
 
   useEffect(() => {
-    getFavMovies();
-  }, []);
+    getFavMovies()
+  }, [])
 
   const getFavMovies = async () => {
-    let results = [];
-
+    let results = []
     results =
       sessUser?.favoriteMovies !== null
         ? await Promise.all(
             sessUser?.favoriteMovies?.map((movieid) => {
               return axios.get(`/movies/singlemovie/${movieid}`).then((obj) => {
-                return obj.data;
-              });
+                return obj.data
+              })
             })
           )
-        : [];
+        : []
 
-    setFavMovies(results);
-  };
+    setFavMovies(results)
+  }
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
-    <div className="user-profile-container">
+    <motion.div
+      className="user-profile-container"
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
+    >
       {sessUser?.id ? (
         <>
-          <header className="user-header">
-            <div className="text-container">
+          <header
+            className="user-header"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            <div>
               <h1>Welcome, {sessUser.name}</h1>
-              {/* <p>You've logged in succesfully</p> */}
-              <p>Member since {sessUser.createdAt.split("T")[0]}</p>
+              <p>
+                Member since{" "}
+                {sessUser.createdAt.split("T")[0].split("-").join("/")}
+              </p>
             </div>
           </header>
           <div className="favorite-movies">
             <div className="favorites-title">
               <h2>Your favorite movies:</h2>
-              {/* <div onClick={deleteAllFavorites}>
-                <FontAwesomeIcon
-                  icon={faTrash}
-                  inverse
-                  className=""
-                  size="2x"
-                />
-              </div> */}
             </div>
             <div className="favs-container">
               {favMovies?.map((movie, i) => {
@@ -81,7 +75,7 @@ const UserProfile = () => {
                       ></img>
                     </div>
                   </a>
-                );
+                )
               })}
             </div>
           </div>
@@ -94,8 +88,8 @@ const UserProfile = () => {
           </button>
         </div>
       )}
-    </div>
-  );
-};
+    </motion.div>
+  )
+}
 
-export default UserProfile;
+export default UserProfile
