@@ -17,7 +17,6 @@ const MovieDetails = ({ movie }) => {
 
   const [corazon, setCorazon] = useState(null)
 
-  // const [trailer, setTrailer] = useState(null)
   const [showTrailer, setShowTrailer] = useState(false)
   const [videoId, setVideoId] = useState(null)
 
@@ -27,14 +26,14 @@ const MovieDetails = ({ movie }) => {
         `https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=e9e7cb266dc0d3f00bd94a93dae48419&language=en-US`
       )
       .then((res) => {
-        console.log("DATAAAAAAAA", res.data)
-        // setTrailer(`https://www.youtube.com/watch?v=${res.data.results[0].key}`)
-        setVideoId(res.data.results[0].key)
+        setVideoId(res.data?.results[0].key)
       })
+      .catch((err) => console.error(err))
   }, [movie])
 
   useEffect(() => {
     if (sessUser?.favoriteMovies.includes(JSON.stringify(movie.id))) {
+      console.log("lAAAAAAAAA TIENEEEEEEEEEEE")
       setCorazon(
         <FontAwesomeIcon
           icon={faHeart}
@@ -42,7 +41,7 @@ const MovieDetails = ({ movie }) => {
           className="favoriteIcon"
           size="2x"
           id="corazon-icon"
-          color={"red"}
+          style={{ color: "red" }}
         />
       )
     } else {

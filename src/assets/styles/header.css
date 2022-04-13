@@ -1,57 +1,3 @@
-/* .header {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 60px;
-  background-color: #070a1b;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-}
-
-.nav-link {
-  color: white;
-  padding-left: 20px;
-}
-a {
-  text-decoration: none;
-}
-li {
-  list-style: none;
-}
-.nav-link:hover {
-  transform: scale(1.1);
-  transition: all 0.2s;
-  color: white;
-}
-.dropdown {
-  position: relative;
-  background-color: transparent;
-  border: none;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 40px;
-  right: 0px;
-  z-index: 1;
-}
-
-.dropdown-content a {
-  padding: 10px 0 0 0;
-  width: fit-content;
-  display: block;
-}
-
-.dropdown:focus .dropdown-content {
-  display: block;
-}
-.dropdown-content a:hover {
-  color: #ddd;
-} */
 .header {
   width: 100%;
   display: flex;
@@ -119,6 +65,8 @@ a {
 .searchmovies {
   max-height: 40px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .searchmovies div {
@@ -128,14 +76,11 @@ a {
 .container-busqueda-resultados {
   z-index: 100;
   display: block;
+  position: absolute;
+  top: 30px;
 }
 
 form {
-  z-index: 100;
-  display: block;
-}
-
-.intendando {
   z-index: 100;
   display: block;
 }
@@ -144,14 +89,19 @@ form {
   display: flex;
   flex-direction: column;
   z-index: 190;
-  background-color: #3f4e9b;
+  background-color: #070a1b;
   border: #070a1b solid 2px;
   border-radius: 8px;
+  width: 230px;
+  padding-bottom: 10px;
+  /* max-width: 230px; */
 }
 
 .single-result-search {
   padding-top: 8px;
+  padding-bottom: 8px;
   border-bottom: 1px solid grey;
+  list-style: none;
 }
 
 .single-result-search:hover {
@@ -188,14 +138,28 @@ form {
 
 .inputsearch-invisible {
   display: none;
+  transition: 0.5 all;
 }
 
 .inputsearch-visible {
   display: block;
+  transition: 0.5 all;
 }
 
 .iconobusqueda:active {
   color: blue;
+}
+
+#formsearch {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#formsearch input {
+  border-radius: 3px;
+  border: none;
 }
 
 @media screen and (max-width: 1000px) {
@@ -203,5 +167,11 @@ form {
     flex-direction: column;
     height: 164px;
     min-height: 180px;
+  }
+  .container-busqueda-resultados {
+    z-index: 100;
+    display: block;
+    position: absolute;
+    top: 100px;
   }
 }

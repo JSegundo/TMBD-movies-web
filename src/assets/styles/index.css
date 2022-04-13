@@ -14,18 +14,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background: rgb(22, 46, 174);
-  background: rgb(92, 85, 37);
-  background: linear-gradient(
-    180deg,
+  background: #251e31;
+  /* background: rgb(92, 85, 37); */
+  /* background: linear-gradient( */
+  /* 180deg,
     rgba(92, 85, 37, 1) 6%,
     rgba(22, 46, 174, 1) 100%
-  );
+  ); */
 }
-
-html {
+/* html {
   scroll-behavior: smooth;
-}
+  scrollbar-width: thin;
+  scrollbar-color: black green;
+} */
 
+::-webkit-scrollbar {
+  width: 12px;
+  /* background-color: #070a1b; */
+  scrollbar-color: white;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  width: 3px;
+  color: #4c9ab8;
+  background-color: #070a1b;
+  scrollbar-color: white;
+  background-color: rgb(181, 181, 181);
+  border-radius: 10px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
