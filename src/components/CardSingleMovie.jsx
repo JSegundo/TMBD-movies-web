@@ -1,31 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar } from "@fortawesome/free-solid-svg-icons"
 
 const CardSingleMovie = ({ movies }) => {
   // console.log(movies);
-  if (!movies[0]) return <p>Loading data...</p>;
+  if (!movies[0]) return <p>Loading data...</p>
 
   return (
     <>
       {movies?.map((movie) => {
         return (
           <Link key={movie.id} to={`/movies/singlemovie/${movie.id}`}>
-            <div className="cardMovie">
-              <div className="title-container">
-                <h1 className="movie-title">{movie.title}</h1>
+            {movie.poster_path ? (
+              <div className="cardMovie">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                  alt="movie"
+                />
+                <div className="hoverinfo">
+                  <h1 className="movie-title">{movie.title}</h1>
+                  <div style={{ display: "flex", justifyContent: "start" }}>
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      inverse
+                      className="starIcon"
+                      size="1x"
+                      id="corazon-icon"
+                    />
+                    <p>{movie.vote_average}</p>
+                  </div>
+                </div>
               </div>
-              <img
-                src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-                alt="movie"
-              />
-              {/* <p>{movie.overview}</p> */}
-              <p>{movie.vote_average}</p>
-            </div>
+            ) : null}
           </Link>
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}
 
-export default CardSingleMovie;
+export default CardSingleMovie

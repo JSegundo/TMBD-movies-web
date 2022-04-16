@@ -41,7 +41,8 @@ a {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 30px;
+  top: 0;
+  top: 5px;
   left: 30px;
   z-index: 1;
   background-color: #070a1b;

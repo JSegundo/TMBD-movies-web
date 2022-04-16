@@ -4,21 +4,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import axios from "axios"
 import { motion } from "framer-motion"
+import { useNavigate } from "react-router-dom"
 
 const TvShowDetails = ({ show }) => {
-  console.log(show)
+  const navigate = useNavigate()
   if (!show) return <p>Loading data...</p>
   let sessUser = JSON.parse(localStorage.getItem("sess-user"))
 
-  const addToFavorite = () => {
-    axios
-      .post(`/user/favs/${sessUser.id}`, { show })
-      .then((res) => res.data)
-      .then((obj) => {
-        localStorage.setItem("sess-user", JSON.stringify(obj))
-      })
-      .catch((err) => console.error(err))
-  }
+  // const addToFavorite = () => {
+  //   if (!sessUser) {
+  //     navigate("/user/login")
+  //     return
+  //   }
+  //   axios
+  //     .post(`/user/favs/${sessUser.id}`, { show })
+  //     .then((res) => res.data)
+  //     .then((obj) => {
+  //       localStorage.setItem("sess-user", JSON.stringify(obj))
+  //     })
+  //     .catch((err) => console.error(err))
+  // }
   return (
     <>
       <motion.div
@@ -31,9 +36,9 @@ const TvShowDetails = ({ show }) => {
           src={`https://image.tmdb.org/t/p/w300/${show.poster_path}`}
           alt="poster"
         />
-        <div>
-          <p>Seasons: {show.number_of_seasons}</p>
-          <p>Episodes: {show.number_of_episodes}</p>
+        <div style={{ marginTop: 20 }}>
+          <p> {show.number_of_seasons} Seasons.</p>
+          <p> {show.number_of_episodes} Episodes.</p>
         </div>
       </motion.div>
       <div className="header-poster">
@@ -46,11 +51,7 @@ const TvShowDetails = ({ show }) => {
             <span className="genres">
               {show.genres ? (
                 show.genres.map((genre, i) => {
-                  return (
-                    <a href="/#" key={i}>
-                      {genre.name},
-                    </a>
-                  )
+                  return <div key={i}>{genre.name} </div>
                 })
               ) : (
                 <p>Loading</p>
@@ -59,39 +60,31 @@ const TvShowDetails = ({ show }) => {
           </div>
         </div>
 
-        <div className="actions">
-          <FontAwesomeIcon
-            icon={faHeart}
-            inverse
-            className="favotireIcon"
-            size="2x"
-            onClick={addToFavorite}
-          />
-          <a href="/#">add to favotires</a>
-        </div>
-
-        <div></div>
-
         <div className="header-info">
           <h3 className="tagline">{show.tagline}</h3>
-          <h2>Overview</h2>
+          <h2 style={{ color: "white" }}>Overview</h2>
           {show.overview ? (
-            <p>{show.overview}</p>
+            <p
+              style={{
+                backgroundColor: "#070a1b",
+                padding: 12,
+                borderRadius: 6,
+              }}
+            >
+              {show.overview}
+            </p>
           ) : (
-            <p>overview not available</p>
+            <p
+              style={{
+                backgroundColor: "#070a1b",
+                padding: 12,
+                borderRadius: 6,
+              }}
+            >
+              overview not available
+            </p>
           )}
         </div>
-      </div>
-
-      <div className="people">
-        <p>
-          Created by:{" "}
-          {show.created_by
-            ? show.created_by[0]
-              ? show.created_by[0].name
-              : ""
-            : ""}
-        </p>
       </div>
     </>
   )

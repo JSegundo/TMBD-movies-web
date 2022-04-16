@@ -36,14 +36,19 @@ a {
 }
 p {
   color: white;
+  margin: 0;
 }
 h1 {
   color: white;
+  margin: 0;
+  padding: 0;
 }
 /* ---------------MOVIES AND CONTAINER MOVIES */
 
 .container-movies {
   display: flex;
+  justify-content: center;
+
   overflow-x: scroll;
   flex-wrap: wrap;
   width: 90%;
@@ -53,17 +58,24 @@ h1 {
 
 .container-movies a {
   border-radius: 2px;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   border-radius: 8px;
   max-width: 300px;
+
   /* padding: 20px; */
+
   margin: 15px 15px 0 0;
-  background-color: #051049;
+  /* margin: 20px; */
+  /* background-color: #051049; */
+}
+
+.container-movies div a {
+  margin: 15px 15px 0 0;
 }
 
 .movie-title {
   font-size: 18px;
-  padding: 10px;
+  padding: 10px 0 10px 0;
 }
 
 .moviesContainer {
@@ -82,31 +94,51 @@ h1 {
 }
 
 .cardMovie {
-  width: 240px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  /* border: 2px solid #070a1b; */
+  position: relative;
   border-radius: 10px;
   margin-right: 20px;
   background-color: #051049;
 }
 
-.cardMovie p {
-  padding-left: 20px;
-  margin: 10px 0 10px 0;
-  font-weight: 900;
-  color: #4c9ab8;
-}
-
 .cardMovie img {
   height: 300px;
+  width: 200px;
   border-radius: 2px;
 }
 
 .title-container {
   height: 70px;
+}
+
+.cardMovie:hover .hoverinfo {
+  visibility: visible;
+  transition: 0.5 all;
+}
+
+.hoverinfo {
+  position: absolute;
+  bottom: 0;
+  height: 50%;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(5, 16, 73, 1) 80%
+  );
+  /* width: 100%; */
+  border-radius: 10px;
+  width: 180px;
+  visibility: hidden;
+  transition: 0.5 all;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.starIcon {
+  color: yellow;
+  margin-right: 10px;
 }
 
 /* HOME --------- HERO HOME  */
@@ -152,5 +184,10 @@ h1 {
   }
   .herohome h1 {
     font-size: 4rem;
+  }
+  .container-movies {
+    width: 100%;
+    justify-content: center;
+    padding: 0;
   }
 }
