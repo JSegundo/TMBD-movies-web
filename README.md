@@ -1,25 +1,4 @@
-//notas:
 
-necesito primero, lograr que se actualize el array en la base de datos.
-
-//
-//
-//
-// PORTALES: TELETRANSPORTACION DE COMPONENTES, lo puedo usar para mostrar un cartel
-cuando un user se quiera registrar y ya esté el mail en uso.
-
-//
-
-si la movie esta en favoritos, el corazon se tiene que mantener de color.
-
-habia pensado un useEffect que se fija en localstorage si la tiene, y le agrega o le saca una clase con el color al icono fav
-
-Hacer funcionar el add favorites para las series
-//
-//
-//
-//
-//
 
 # 26 - TMDB
 
@@ -29,11 +8,6 @@ Hacer funcionar el add favorites para las series
 
 En este proyecto, crearás una aplicación que muestre películas y programas de televisión. Para eso, consumirás la información de la API de [_The Movie Database_ (TMDB)](https://www.themoviedb.org/).
 
-Para armar el _front-end_, aplicarás lo aprendido hasta ahora.
-
-Para el _back-end_, deberás configurar una base de datos y construir las funcionalidades detalladas a continuación.
-
-⚠️ **Importante**: La información de los usuarios deberá **persistir** en el _back-end_.
 
 ### ¿Qué Debe Tener Tu Aplicación?
 
@@ -70,6 +44,5 @@ En este sentido, deberás enfocarte primero en las funcionalidades _Must Have_ (
 - _Full responsive_.
 - _Loguear_ usuarios a través de su cuenta en Google.
 
-### Pledu
 
-Hacé [_click_ acá](https://pledu.plataforma5.la/bootcamp/omdb/solo%20week-581874b7) para acceder al módulo correspondiente en Pledu.
+
