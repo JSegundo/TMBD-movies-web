@@ -32,7 +32,7 @@ const MovieDetails = ({ movie }) => {
   }, [movie])
 
   useEffect(() => {
-    if (sessUser?.favoriteMovies.includes(JSON.stringify(movie.id))) {
+    if (sessUser?.favoriteMovies?.includes(JSON.stringify(movie.id))) {
       console.log("lAAAAAAAAA TIENEEEEEEEEEEE")
       setCorazon(
         <FontAwesomeIcon
