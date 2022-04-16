@@ -27,11 +27,10 @@ const Login = () => {
       const result = await axios.post("/user/login", { email, password })
       localStorage.setItem("sess-user", JSON.stringify(result.data.user))
       sessionStorage.setItem("token", result.data.token)
-      // setToken(result.data.token);
       setUser(result.data.user)
       navigate("/")
     } catch (err) {
-      setError("Password is not correct")
+      setError("Your email or password were incorrect.")
     }
   }
 
@@ -43,42 +42,55 @@ const Login = () => {
       exit={{ opacity: 0 }}
     >
       <form onSubmit={handleSubmit} method="post">
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="text"
-            autoComplete="email"
-            placeholder="email"
-            required
-            autoFocus
-            onChange={handleChange}
-            value={email.value}
-          />
-        </div>
+        {/* <div> */}
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="text"
+          autoComplete="email"
+          placeholder="email"
+          required
+          autoFocus
+          onChange={handleChange}
+          value={email.value}
+        />
+        {/* </div> */}
 
-        <div>
-          <label htmlFor="current-password">Password</label>
-          <input
-            id="current-password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            placeholder="password"
-            required
-            autoFocus
-            onChange={handleChange}
-            value={password.value}
-          />
+        {/* <div> */}
+        <label htmlFor="current-password">Password</label>
+        <input
+          id="current-password"
+          name="password"
+          type="password"
+          autoComplete="current-password"
+          placeholder="******"
+          required
+          autoFocus
+          onChange={handleChange}
+          value={password.value}
+        />
+        {/* </div> */}
+        <div classname="container-buttons">
+          <button type="submit" className="loginbtn">
+            Sign in
+          </button>
+          <button className="loginbtn">Sign in with Google</button>
+          <Link to={"/user/register"} className="registerbtn">
+            <p>Create an account.</p>
+          </Link>
         </div>
-        <button type="submit" className="loginbtn">
-          Sign in
-        </button>
-        <Link to={"/user/register"}>
-          <p className="registerbtn">Create an account.</p>
-        </Link>
-        {error && <p>{error}</p>}
+        {error && (
+          <p
+            style={{
+              padding: 6,
+              width: "fit-content",
+              borderBottom: "2px solid red",
+            }}
+          >
+            {error}
+          </p>
+        )}
       </form>
     </motion.div>
   )

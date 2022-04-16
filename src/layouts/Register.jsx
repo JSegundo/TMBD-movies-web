@@ -72,9 +72,11 @@ const Register = () => {
           />
         </div>
 
-        <button className="registerbtn" type="submit">
-          Register
-        </button>
+        <div>
+          <button className="registerbtn" type="submit">
+            Register
+          </button>
+        </div>
       </form>
     </motion.div>
   )

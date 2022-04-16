@@ -7,19 +7,13 @@
   width: 100%;
   /* z-index: -100; */
 }
-/* .movieinfo-container {
-  height: fit-content;
-  display: flex;
-} */
+
 .releaseDate {
   color: grey;
 }
 .tagline {
   color: white;
 }
-/* .facts {
-  display: flex;
-} */
 
 .genres {
   display: flex;

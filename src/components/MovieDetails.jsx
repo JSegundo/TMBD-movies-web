@@ -153,8 +153,16 @@ const MovieDetails = ({ movie }) => {
 
           <div className="header-info">
             <h3 className="tagline">"{movie.tagline}"</h3>
-            <h2>Overview</h2>
-            <p>{movie.overview}</p>
+            <h2 style={{ color: "white" }}>Overview</h2>
+            <p
+              style={{
+                backgroundColor: "#070a1b",
+                padding: 12,
+                borderRadius: 6,
+              }}
+            >
+              {movie.overview}
+            </p>
           </div>
         </div>
 

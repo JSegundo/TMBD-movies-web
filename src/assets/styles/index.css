@@ -2,7 +2,6 @@
 @import "./userprofile.css";
 @import "./moviesdetails.css";
 @import "./loginform.css";
-@import "./registerform.css";
 @import "./footer.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;0,900;1,900&display=swap");
@@ -15,30 +14,16 @@ body {
 
   background: rgb(22, 46, 174);
   background: #251e31;
-  /* background: rgb(92, 85, 37); */
-  /* background: linear-gradient( */
-  /* 180deg,
-    rgba(92, 85, 37, 1) 6%,
-    rgba(22, 46, 174, 1) 100%
-  ); */
+  background-image: url("../cine.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-/* html {
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: black green;
-} */
 
 ::-webkit-scrollbar {
   width: 12px;
-  /* background-color: #070a1b; */
-  scrollbar-color: white;
-  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  width: 3px;
-  color: #4c9ab8;
-  background-color: #070a1b;
-  scrollbar-color: white;
   background-color: rgb(181, 181, 181);
   border-radius: 10px;
 }

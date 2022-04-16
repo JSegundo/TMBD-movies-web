@@ -20,9 +20,9 @@ const Navbar = () => {
     axios
       .post("/user/logout")
       .then(() => {
-        // localStorage.clear();
+        localStorage.clear()
         setUser(null)
-        console.log("Logged out!")
+        // localStorage.removeItem("sess-user")
         navigate("/")
       })
       .catch((err) => console.error(err))
@@ -45,22 +45,7 @@ const Navbar = () => {
       .catch((err) => console.error(err))
   }
 
-  // const [submited, setSubmited] = useState(false)
   const [movies, setMovies] = useState(null)
-
-  // const handleSubmit = (e) => {
-  // e.preventDefault()
-  // axios
-  //   .get(
-  //     `${API}/search/multi?${apiKEY}&language=en-US&query=${inputvalue}&page=1&include_adult=true`
-  //   )
-  //   .then((resp) => resp.data)
-  //   .then((response) => {
-  //     setMovies(response)
-  //     setSubmited(true)
-  //   })
-  //   .catch((err) => console.error(err))
-  // }
   const [showSearchBar, setShowSearchBar] = useState(null)
 
   document.onclick = function (event) {
@@ -68,10 +53,6 @@ const Navbar = () => {
       setMovies(null)
     }
   }
-  // const toggleSearchBar = () => {
-  //   const searchBar = document.getElementById("formsearch")
-  //   searchBar.classList.toggle("inputsearch-invisible")
-  // }
 
   return (
     <header className="header">
@@ -115,8 +96,6 @@ const Navbar = () => {
           </ul>
         </button>
       </nav>
-
-      {/* PRUEBASSSSSSSSSSSSSSSSSSSSSSSSSSSSS */}
 
       <div className="searchmovies">
         <div onClick={() => setShowSearchBar(!showSearchBar)}>
@@ -175,7 +154,7 @@ const Navbar = () => {
           </>
         ) : (
           <Link to={"/user/login"}>
-            <button className="login-logout-btn">Login</button>
+            <button className="login-logout-btn">Log in</button>
           </Link>
         )}
       </div>
