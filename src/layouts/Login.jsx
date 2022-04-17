@@ -38,8 +38,8 @@ const Login = () => {
     <motion.div
       className="containerLoginForm"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 2 }}
-      exit={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 1, transition: { duration: 0.4 } }}
     >
       <form onSubmit={handleSubmit} method="post">
         {/* <div> */}
@@ -55,9 +55,7 @@ const Login = () => {
           onChange={handleChange}
           value={email.value}
         />
-        {/* </div> */}
 
-        {/* <div> */}
         <label htmlFor="current-password">Password</label>
         <input
           id="current-password"
@@ -75,7 +73,7 @@ const Login = () => {
           <button type="submit" className="loginbtn">
             Sign in
           </button>
-          <button className="loginbtn">Sign in with Google</button>
+          {/* <button className="loginbtn">Sign in with Google</button> */}
           <Link to={"/user/register"} className="registerbtn">
             <p>Create an account.</p>
           </Link>

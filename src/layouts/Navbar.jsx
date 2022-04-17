@@ -13,7 +13,7 @@ const Navbar = () => {
   // let sessUser = JSON.parse(localStorage.getItem("sess-user"));
   const { user, setUser } = useUser()
   let sessUser = user
-  console.log(sessUser)
+  // console.log(sessUser)
   const navigate = useNavigate()
 
   const handleLogout = () => {

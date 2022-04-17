@@ -30,7 +30,8 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "^4.0.3",
     "react-youtube": "^8.0.0",
-    "sequelize": "^6.16.2"
+    "sequelize": "^6.16.2",
+    "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "concurrently 'npm run server' 'npm run client' ",

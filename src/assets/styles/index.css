@@ -48,7 +48,6 @@ h1 {
 .container-movies {
   display: flex;
   justify-content: center;
-
   overflow-x: scroll;
   flex-wrap: wrap;
   width: 90%;
@@ -58,15 +57,9 @@ h1 {
 
 .container-movies a {
   border-radius: 2px;
-  /* border: 2px solid blue; */
   border-radius: 8px;
   max-width: 300px;
-
-  /* padding: 20px; */
-
   margin: 15px 15px 0 0;
-  /* margin: 20px; */
-  /* background-color: #051049; */
 }
 
 .container-movies div a {

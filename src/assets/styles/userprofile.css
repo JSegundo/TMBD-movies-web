@@ -7,7 +7,6 @@
 .user-header {
   width: 80%;
   margin: 0 auto;
-  /* background-image: url("https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZGFyayUyMHNvbGlkJTIwcGF0dGVybnMlMjBkZXNrdG9wfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"); */
   background-image: url("../felix-mooneeram-evlkOfkQ5rE-unsplash.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -16,14 +15,19 @@
   min-height: 200px;
   border-radius: 10px;
   display: flex;
+  justify-content: center !important;
 }
 
-.user-header .text-container {
+/* .user-header div {
+  margin-top: 40px;
+} */
+
+/* .user-header .text-container {
   padding: 10px 20px 10px 20px;
   border: 4px solid white;
   border-radius: 10px;
   width: fit-content;
-}
+} */
 
 /* .user-header h1 {
   margin: 0;
@@ -32,9 +36,6 @@
 .favotireIcon:hover {
   transform: scale(1.1);
   transition: 0.2s all;
-}
-
-.favorite-movies {
 }
 
 .favorites-title {

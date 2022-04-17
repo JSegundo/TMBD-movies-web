@@ -29,8 +29,8 @@ const TvShowDetails = ({ show }) => {
       <motion.div
         className="singlemovieposter"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 2 }}
-        exit={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 1 }}
       >
         <img
           src={`https://image.tmdb.org/t/p/w300/${show.poster_path}`}

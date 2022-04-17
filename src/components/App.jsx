@@ -23,6 +23,7 @@ const App = () => {
   let sessUser = JSON.parse(localStorage.getItem("sess-user"))
 
   useEffect(() => {
+    if (!sessUser) return
     setUser(sessUser)
   }, [])
 
@@ -31,7 +32,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/tvshow/:options" element={<TopTvShowsContainer />} />

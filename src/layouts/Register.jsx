@@ -4,14 +4,29 @@ import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 
 const Register = () => {
-  const [name, setName] = useState({})
-  const [email, setEmail] = useState({})
-  const [password, setPassword] = useState({})
-
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    let validEMail = /([a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+.[a-zA-Z0-9_-]+)/gi.test(
+      email
+    )
+    if (!validEMail) {
+      setError("Email invalido!")
+      return
+    }
+    let passwordValid = /^^(?=.?[A-Z])(?=.?[a-z]).{8,}$/.test(password)
+    if (!passwordValid) {
+      setError(
+        "Contraseña invalida! debe tener minimo 8 caracteres y 1 mayuscula."
+      )
+      return
+    }
+
     axios
       .post("/user/register", { name, email, password })
       .then(() => {
@@ -31,8 +46,8 @@ const Register = () => {
     <motion.div
       className="containerLoginForm"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 2 }}
-      exit={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 1, transition: { duration: 0.4 } }}
     >
       <form onSubmit={handleSubmit}>
         <div>
@@ -71,7 +86,17 @@ const Register = () => {
             value={password.value}
           />
         </div>
-
+        {error && (
+          <p
+            style={{
+              padding: 6,
+              width: "fit-content",
+              borderBottom: "2px solid red",
+            }}
+          >
+            {error}
+          </p>
+        )}
         <div>
           <button className="registerbtn" type="submit">
             Register

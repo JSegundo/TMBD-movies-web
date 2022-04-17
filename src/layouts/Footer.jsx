@@ -2,6 +2,7 @@ import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowAltCircleUp } from "@fortawesome/free-solid-svg-icons"
 // import { fa } from "@fortawesome/free-solid-svg-icons";
+import { faHome } from "@fortawesome/free-solid-svg-icons"
 
 const Footer = () => {
   return (
@@ -16,21 +17,19 @@ const Footer = () => {
             id="corazon-icon"
           />
         </a>
-        {/* <a href="#">
-          <i class="fa fa-twitter"></i>
-        </a>
-        <a href="#">
-          <i class="fa fa-linkedin"></i>
-        </a>
-        <a href="#">
-          <i class="fa fa-github"></i>
-        {/* </a> */}
       </div>
 
       <div className="footer-left">
         <p className="footer-links">
           <a className="link-1" href="/#">
-            Home
+            <FontAwesomeIcon
+              icon={faHome}
+              inverse
+              className="favoriteIcon"
+              size="2x"
+              id="corazon-icon"
+              // style={{ color: "red" }}
+            />
           </a>
 
           <a

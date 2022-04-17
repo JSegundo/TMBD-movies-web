@@ -16,7 +16,7 @@ section {
 }
 
 .footer-distributed {
-  margin-top: 100px;
+  margin-top: 80px;
   /* display: flex; */
   justify-content: center;
   background-color: #070a1b;
@@ -50,6 +50,7 @@ section {
   text-decoration: none;
   /* color: inherit; */
   transition: ease 0.25s;
+  margin-right: 24px;
 }
 
 .footer-distributed .footer-links a:before {

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons"
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
 import YouTube from "react-youtube"
+import swal from "sweetalert"
 
 const MovieDetails = ({ movie }) => {
   const { user, setUser } = useUser()
@@ -68,7 +69,15 @@ const MovieDetails = ({ movie }) => {
 
   const addToFavorite = () => {
     if (!sessUser) {
-      navigate("/user/login")
+      // alert("You have to log in")
+      swal({
+        title: "Error ",
+        text: "You have to be logged in to be able to mark a movie as a favorite",
+        icon: "error",
+        button: "I get it",
+        timer: 2000,
+      }).then(() => navigate("/user/login"))
+
       return
     }
     authAxios
@@ -84,13 +93,12 @@ const MovieDetails = ({ movie }) => {
   if (!movie) return <p>Movie does not exist...</p>
 
   return (
-    <>
-      <motion.div
-        className="movieDetailsPage"
-        initial={{ width: 0 }}
-        animate={{ width: "100%" }}
-        exit={{ x: window.innerWidth, transition: { duration: 0.3 } }}
-      >
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 1, transition: { duration: 0.4 } }}
+    >
+      <div className="movieDetailsPage">
         <div className="singlemovieposter">
           {/* <img
           src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
@@ -167,7 +175,7 @@ const MovieDetails = ({ movie }) => {
         </div>
 
         <div className="people"></div>
-      </motion.div>
+      </div>
       {showTrailer && (
         <div
           style={{
@@ -184,7 +192,7 @@ const MovieDetails = ({ movie }) => {
           />
         </div>
       )}
-    </>
+    </motion.div>
   )
 }
 
