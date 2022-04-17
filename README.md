@@ -1,5 +1,6 @@
 
 Proyecto individual que hice durante la cursada del bootcamp Plataforma5.
+Para levantar el proyecto => git clone -> npm start
 
 https://user-images.githubusercontent.com/87492687/163722824-b14a5c17-be06-4c00-91b8-81294c9a1921.mp4
 
