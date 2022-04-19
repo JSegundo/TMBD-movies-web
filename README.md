@@ -1,11 +1,11 @@
-<h1>TMDB MOVIES!<h1/>
+<h1>TMDB MOVIES!</h1>
 
 Proyecto individual que hice durante la cursada del bootcamp Plataforma5.
 
 Para levantar el proyecto => git clone -> npm i -> npm start
 
 📱️ Mobile
- https://user-images.githubusercontent.com/87492687/164070383-be8d82d0-fce0-4b61-a7e2-78b150ed7e2b.mp4
+https://user-images.githubusercontent.com/87492687/164070383-be8d82d0-fce0-4b61-a7e2-78b150ed7e2b.mp4
  
 💻️ Desktop
  
