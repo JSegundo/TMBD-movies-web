@@ -9,7 +9,6 @@ https://user-images.githubusercontent.com/87492687/164072467-1764d862-6e7d-4cdb-
  
 💻️ Desktop
  
-https://user-images.githubusercontent.com/87492687/163722824-b14a5c17-be06-4c00-91b8-81294c9a1921.mp4
 
 Stack utilizado: 
  - En el front: ReactJS y context API, css plano y css in js para estilado.
