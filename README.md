@@ -9,7 +9,7 @@ Para levantar el proyecto => git clone -> npm i -> npm start
 
 ![Screenshot from 2022-04-19 15-41-37](https://user-images.githubusercontent.com/87492687/164073884-9946519d-41c4-42b2-95cd-4a84a2ae2a45.png)
 ![Screenshot from 2022-04-19 15-41-48](https://user-images.githubusercontent.com/87492687/164073793-0725da60-cbd5-4b56-bb1f-29cc969740e6.png)
-![Screenshot from 2022-04-19 15-42-22](https://user-images.githubusercontent.com/87492687/164073922-87dc3695-20d1-4e48-8f5f-95b16b20ce2f.png)
+
 
 
 
