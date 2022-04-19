@@ -8,6 +8,10 @@ Para levantar el proyecto => git clone -> npm i -> npm start
 https://user-images.githubusercontent.com/87492687/164072467-1764d862-6e7d-4cdb-88d0-9e2497e2727b.mp4
  
 💻️ Desktop
+https://user-images.githubusercontent.com/87492687/163722824-b14a5c17-be06-4c00-91b8-81294c9a1921.mp4
+
+https://user-images.githubusercontent.com/87492687/163722824-b14a5c17-be06-4c00-91b8-81294c9a1921.mp4
+
  
 
 Stack utilizado: 
