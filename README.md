@@ -11,6 +11,7 @@ Para levantar el proyecto => git clone -> npm i -> npm start
 
 ![presentationTMDBport](https://user-images.githubusercontent.com/87492687/164351442-f01988fc-17a1-4df3-8558-6b06636aabfb.png)
 
+![presentationTMDBport](https://user-images.githubusercontent.com/87492687/164351442-f01988fc-17a1-4df3-8558-6b06636aabfb.png)
 
 Video navegación: https://user-images.githubusercontent.com/87492687/164072467-1764d862-6e7d-4cdb-88d0-9e2497e2727b.mp4
  
