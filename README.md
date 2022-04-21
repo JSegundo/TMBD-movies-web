@@ -7,10 +7,9 @@ Para levantar el proyecto => git clone -> npm i -> npm start
 📱️ Mobile.
 
 
-![Screenshot from 2022-04-19 15-41-37](https://user-images.githubusercontent.com/87492687/164073884-9946519d-41c4-42b2-95cd-4a84a2ae2a45.png)
-![Screenshot from 2022-04-19 15-41-48](https://user-images.githubusercontent.com/87492687/164073793-0725da60-cbd5-4b56-bb1f-29cc969740e6.png)
 
 
+![presentationTMDBport](https://user-images.githubusercontent.com/87492687/164351442-f01988fc-17a1-4df3-8558-6b06636aabfb.png)
 
 
 Video navegación: https://user-images.githubusercontent.com/87492687/164072467-1764d862-6e7d-4cdb-88d0-9e2497e2727b.mp4
