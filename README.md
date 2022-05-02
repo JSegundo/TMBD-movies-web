@@ -2,7 +2,6 @@
 
 Proyecto individual que hice durante la cursada del bootcamp Plataforma5.
 
-Para levantar el proyecto => git clone -> npm i -> npm start
 
 📱️ Mobile.
 
