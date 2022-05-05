@@ -7,8 +7,8 @@ Proyecto individual que hice durante la cursada del bootcamp Plataforma5.
 
 
 
+![agusTmdb](https://user-images.githubusercontent.com/87492687/166977963-281234ba-0562-48b3-9dd4-f6593b2ae1e3.jpg)
 
-![presentationTMDBport](https://user-images.githubusercontent.com/87492687/164351442-f01988fc-17a1-4df3-8558-6b06636aabfb.png)
 
 
 Video navegación: https://user-images.githubusercontent.com/87492687/164072467-1764d862-6e7d-4cdb-88d0-9e2497e2727b.mp4
