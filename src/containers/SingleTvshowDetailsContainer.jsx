@@ -1,26 +1,27 @@
-import React from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import TvShowDetails from "../components/TvshowDetails";
+import React from "react"
+import axios from "axios"
+import { useParams } from "react-router-dom"
+import TvShowDetails from "../components/TvshowDetails"
+import { baseUrl } from "../utils/baseUrl.js"
 
 const SingleTvshowDetailsContainer = () => {
-  const [tvshow, setTvshow] = React.useState({});
-  const { showid } = useParams();
+  const [tvshow, setTvshow] = React.useState({})
+  const { showid } = useParams()
 
   React.useEffect(() => {
     axios
-      .get(`/tvshow/tv/${showid}`)
+      .get(`${baseUrl}/tvshow/tv/${showid}`)
       .then((response) => {
-        setTvshow(response.data);
+        setTvshow(response.data)
       })
-      .catch((err) => console.error(err));
-  }, [showid]);
+      .catch((err) => console.error(err))
+  }, [showid])
 
   return (
     <div className="movieDetailsPage">
       <TvShowDetails show={tvshow} />
     </div>
-  );
-};
+  )
+}
 
-export default SingleTvshowDetailsContainer;
+export default SingleTvshowDetailsContainer

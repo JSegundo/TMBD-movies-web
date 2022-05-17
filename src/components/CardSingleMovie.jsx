@@ -6,7 +6,6 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"
 const CardSingleMovie = ({ movies }) => {
   // console.log(movies);
   if (!movies[0]) return <p>Loading data...</p>
-
   return (
     <>
       {movies?.map((movie) => {

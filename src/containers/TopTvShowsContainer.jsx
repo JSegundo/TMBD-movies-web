@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import CardSingleTvshow from "../components/CardSingleTvshow"
 import { motion } from "framer-motion"
+import { baseUrl } from "../utils/baseUrl.js"
 
 const TopTvShowsContainer = () => {
   const [tvshows, setTvshows] = useState({})
   const { options } = useParams()
 
   useEffect(() => {
-    axios.get(`/tvshow/${options}`).then((obj) => {
-      console.log(obj)
+    axios.get(`${baseUrl}/tvshow/${options}`).then((obj) => {
       setTvshows(obj.data.results)
     })
   }, [options])

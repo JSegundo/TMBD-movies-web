@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useUser } from "../context/UserContext.js"
 import { motion } from "framer-motion"
+import { baseUrl } from "../utils/baseUrl.js"
 
 import axios from "axios"
 const UserProfile = () => {
   let sessUser = JSON.parse(localStorage.getItem("sess-user"))
-  const { user } = useUser()
   const [favMovies, setFavMovies] = useState([])
 
   useEffect(() => {
@@ -19,9 +18,11 @@ const UserProfile = () => {
       sessUser?.favoriteMovies !== null
         ? await Promise.all(
             sessUser?.favoriteMovies?.map((movieid) => {
-              return axios.get(`/movies/singlemovie/${movieid}`).then((obj) => {
-                return obj.data
-              })
+              return axios
+                .get(`${baseUrl}/movies/singlemovie/${movieid}`)
+                .then((obj) => {
+                  return obj.data
+                })
             })
           )
         : []
@@ -66,7 +67,6 @@ const UserProfile = () => {
                 return (
                   <a href={`/movies/singlemovie/${movie.id}`} key={i}>
                     <div className="div-container">
-                      {/* <FontAwesomeIcon icon={faTrashCan} inverse size="1x" /> */}
                       <h3>{movie.title}</h3>
                       <img
                         src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}

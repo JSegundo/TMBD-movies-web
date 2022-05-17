@@ -9,6 +9,21 @@ import { faCirclePlay } from "@fortawesome/free-solid-svg-icons"
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
 import YouTube from "react-youtube"
 import swal from "sweetalert"
+import { baseUrl } from "../utils/baseUrl.js"
+
+const useWindowSize = () => {
+  const [size, setSize] = useState([
+    window.innerHeight / 2,
+    window.innerWidth / 2,
+  ])
+  useEffect(() => {
+    const handleResize = () => {
+      setSize([window.innerHeight, window.innerWidth])
+    }
+    window.addEventListener("resize", handleResize)
+  }, [])
+  return size
+}
 
 const MovieDetails = ({ movie }) => {
   const { user, setUser } = useUser()
@@ -61,7 +76,7 @@ const MovieDetails = ({ movie }) => {
   const navigate = useNavigate()
 
   const authAxios = axios.create({
-    baseURL: "http://localhost:3001",
+    baseURL: `${baseUrl}`,
     headers: {
       authorization: `Bearer ${token}`,
     },
@@ -69,7 +84,6 @@ const MovieDetails = ({ movie }) => {
 
   const addToFavorite = () => {
     if (!sessUser) {
-      // alert("You have to log in")
       swal({
         title: "Error ",
         text: "You have to be logged in to be able to mark a movie as a favorite",
@@ -77,7 +91,6 @@ const MovieDetails = ({ movie }) => {
         button: "I get it",
         timer: 2000,
       }).then(() => navigate("/user/login"))
-
       return
     }
     authAxios
@@ -90,6 +103,8 @@ const MovieDetails = ({ movie }) => {
       .catch((err) => console.error(err))
   }
 
+  const [height, width] = useWindowSize()
+
   if (!movie) return <p>Movie does not exist...</p>
 
   return (
@@ -100,10 +115,6 @@ const MovieDetails = ({ movie }) => {
     >
       <div className="movieDetailsPage">
         <div className="singlemovieposter">
-          {/* <img
-          src={`https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`}
-          className="fondo-movie-card"
-        /> */}
           <img
             src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
             alt="poster"
@@ -176,6 +187,7 @@ const MovieDetails = ({ movie }) => {
 
         <div className="people"></div>
       </div>
+
       {showTrailer && (
         <div
           style={{
@@ -186,8 +198,8 @@ const MovieDetails = ({ movie }) => {
           <YouTube
             videoId={`${videoId}`}
             opts={{
-              height: "390",
-              width: "640",
+              height: width < 800 ? height / 2 : height,
+              width: width < 800 ? width * 2 : width,
             }}
           />
         </div>

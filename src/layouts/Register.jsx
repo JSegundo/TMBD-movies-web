@@ -2,6 +2,7 @@ import axios from "axios"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
+import { baseUrl } from "../utils/baseUrl.js"
 
 const Register = () => {
   const [name, setName] = useState("")
@@ -28,7 +29,7 @@ const Register = () => {
     }
 
     axios
-      .post("/user/register", { name, email, password })
+      .post(`${baseUrl}/user/register`, { name, email, password })
       .then(() => {
         navigate("/user/login")
         console.log("User Created!!")

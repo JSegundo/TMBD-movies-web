@@ -1,28 +1,32 @@
 import React, { useState, useEffect } from "react"
 import CardSingleMovie from "../components/CardSingleMovie"
 import { motion } from "framer-motion"
+import { baseUrl } from "../utils/baseUrl.js"
+
 const axios = require("axios")
 
 const Home = () => {
+  console.log("baseUrl", baseUrl)
   const [popular, setPopular] = useState({})
   const [top_rated, setTopRated] = useState({})
   const [upcoming, setUpcoming] = useState({})
 
   useEffect(() => {
     axios
-      .get(`movies/popular`)
+      .get(`${baseUrl}/movies/popular`)
       .then((response) => {
+        console.log(baseUrl)
         setPopular(response.data.results)
       })
       .catch((err) => console.error(err))
     axios
-      .get(`/movies/top_rated`)
+      .get(`${baseUrl}/movies/top_rated`)
       .then((response) => {
         setTopRated(response.data.results)
       })
       .catch((err) => console.error(err))
     axios
-      .get(`/movies/upcoming`)
+      .get(`${baseUrl}/movies/upcoming`)
       .then((response) => {
         setUpcoming(response.data.results)
       })

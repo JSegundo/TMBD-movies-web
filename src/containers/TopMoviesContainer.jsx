@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import CardSingleMovie from "../components/CardSingleMovie"
 import { motion } from "framer-motion"
+import { baseUrl } from "../utils/baseUrl.js"
 
 const TopMoviesContainer = () => {
   const [movies, setMovies] = useState({})
   const { filterby } = useParams()
 
   useEffect(() => {
-    axios.get(`/movies/${filterby}`).then((obj) => {
+    axios.get(`${baseUrl}/movies/${filterby}`).then((obj) => {
       setMovies(obj.data.results)
     })
   }, [filterby])

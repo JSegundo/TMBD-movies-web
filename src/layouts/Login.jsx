@@ -3,9 +3,8 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
-
 import { useUser } from "../context/UserContext.js"
-
+import { baseUrl } from "../utils/baseUrl.js"
 const Login = () => {
   const { setUser, setToken } = useUser()
 
@@ -24,7 +23,10 @@ const Login = () => {
 
     e.preventDefault()
     try {
-      const result = await axios.post("/user/login", { email, password })
+      const result = await axios.post(`${baseUrl}/user/login`, {
+        email,
+        password,
+      })
       localStorage.setItem("sess-user", JSON.stringify(result.data.user))
       sessionStorage.setItem("token", result.data.token)
       setUser(result.data.user)
