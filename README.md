@@ -1,8 +1,5 @@
 <h1>TMDB MOVIES!</h1>
-https://tmdb-movies-alpha.vercel.app/
-
-💻️ Desktop.
-https://user-images.githubusercontent.com/87492687/163722824-b14a5c17-be06-4c00-91b8-81294c9a1921.mp4
+Link: ---> https://tmdb-movies-alpha.vercel.app/
 
 Stack utilizado: 
  - En el front: ReactJS y context API, css plano y css in js para estilado.
